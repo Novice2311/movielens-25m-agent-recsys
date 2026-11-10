@@ -1,0 +1,17 @@
+__pycache__/
+.pytest_cache/
+.venv/
+venv/
+artifacts/
+models/
+state/
+*.zip
+*.csv
+*.pt
+*.npz
+*.npy
+.env
+*.log
+wheelhouse/*
+!wheelhouse/.gitkeep
+!requirements*.txt

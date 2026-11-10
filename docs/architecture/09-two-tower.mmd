@@ -1,0 +1,10 @@
+flowchart LR
+  u["User inputs<br/>ID embedding 64<br/>Train-only genre profile G"]
+  i["Item inputs<br/>ID embedding 64<br/>Multi-hot genre vector G"]
+  ut["User tower<br/>Linear 64+G → 64 → 32<br/>ReLU + L2 normalization"]
+  it["Item tower<br/>Linear 64+G → 64 → 32<br/>ReLU + L2 normalization"]
+  score["Dot product<br/>Score = z(u) · z(i)<br/>BPR with temperature 0.1<br/>All-catalog top K"]
+  u --> ut
+  i --> it
+  ut -->|"user vector"| score
+  it -->|"item vector"| score

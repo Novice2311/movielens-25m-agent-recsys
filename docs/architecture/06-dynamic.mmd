@@ -1,0 +1,14 @@
+flowchart LR
+  user["Browser UI<br/>[Container]<br/>Bounded request"]
+  graph["Graph supervisor<br/>[Container]<br/>State and routing"]
+  models["LLM pool<br/>[Container group]<br/>Qwen / Gemma"]
+  catalog["Catalog tool<br/>[Component]<br/>Rank, filter, check"]
+  memory["Memory<br/>[Data store]<br/>Facts and episodes"]
+  output["Validated output<br/>[Data]<br/>Or deterministic fallback"]
+  user -->|"1 request"| graph
+  memory -->|"2 recall"| graph
+  graph -->|"3 plan / select / verify"| models
+  graph -->|"4 retrieve + contracts"| catalog
+  catalog -->|"5 evidence"| output
+  models -->|"6 verdict"| output
+  output -->|"7 response"| user

@@ -1,0 +1,19 @@
+groups:
+  - name: movie-agent
+    rules:
+      - alert: MovieAgentLLMFailure
+        expr: sum(increase(movie_agent_llm_calls_total{status="error"}[5m])) > 0
+        for: 0s
+        labels: {severity: warning}
+        annotations:
+          summary: LLM request failed and the catalog fallback was required
+      - alert: MovieAgentUnavailable
+        expr: up{job="movie-agent"} == 0
+        for: 20s
+        labels: {severity: critical}
+        annotations: {summary: Recommendation service is unreachable}
+      - alert: MovieAgentSlow
+        expr: histogram_quantile(0.95, sum by (le) (rate(movie_agent_request_seconds_bucket[10m]))) > 30
+        for: 1m
+        labels: {severity: warning}
+        annotations: {summary: End to end p95 exceeds the demo latency budget}

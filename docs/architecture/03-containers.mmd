@@ -1,0 +1,14 @@
+flowchart LR
+  web["Web UI<br/>[Container · Browser]<br/>Запрос и результат"]
+  api["Application API<br/>[Container · Python]<br/>FastAPI и LangGraph"]
+  llm["LLM gateway<br/>[Container · Python]<br/>Три фиксированных URL"]
+  art["Model artifacts<br/>[Data store · NPZ]<br/>Векторы и каталог"]
+  db["Memory store<br/>[Data store · SQLite]<br/>Факты и эпизоды"]
+  models["Local model pool<br/>[Container group]<br/>Три llama.cpp server"]
+  obs["Observability stack<br/>[Container group]<br/>Prometheus / Tempo / Grafana"]
+  web -->|"HTTP"| api
+  api -->|"typed JSON"| llm
+  llm -->|"OpenAI-compatible API"| models
+  api -->|"SQL + TTL"| db
+  art -->|"read only"| api
+  api -->|"metrics + OTLP"| obs

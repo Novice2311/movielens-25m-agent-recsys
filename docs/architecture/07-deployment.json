@@ -1,0 +1,129 @@
+{
+  "name": "07-deployment",
+  "title": "C4 Deployment on Windows",
+  "boundaries": [
+    {
+      "x": 5,
+      "y": 5,
+      "w": 1040,
+      "h": 620,
+      "title": "Windows host · Docker Desktop / WSL2 VM"
+    },
+    {
+      "x": 25,
+      "y": 160,
+      "w": 995,
+      "h": 440,
+      "title": "Linux containers · internal network · no Docker socket"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "browser",
+      "x": 55,
+      "y": 45,
+      "w": 210,
+      "h": 85,
+      "title": "Browser",
+      "detail": "localhost:18080",
+      "kind": "person"
+    },
+    {
+      "id": "api",
+      "x": 55,
+      "y": 245,
+      "w": 235,
+      "h": 105,
+      "title": "App + gateway",
+      "detail": "non-root · read-only\nCPU and memory limits",
+      "kind": "container"
+    },
+    {
+      "id": "models",
+      "x": 405,
+      "y": 245,
+      "w": 250,
+      "h": 105,
+      "title": "3 llama.cpp servers",
+      "detail": "CPU inference\nGGUF read-only mount",
+      "kind": "container"
+    },
+    {
+      "id": "obs",
+      "x": 765,
+      "y": 245,
+      "w": 220,
+      "h": 105,
+      "title": "Observability",
+      "detail": "Metrics + traces\nLoopback dashboards",
+      "kind": "container"
+    },
+    {
+      "id": "state",
+      "x": 55,
+      "y": 455,
+      "w": 235,
+      "h": 85,
+      "title": "State volume",
+      "detail": "SQLite + JSONL",
+      "kind": "store"
+    },
+    {
+      "id": "artifact",
+      "x": 405,
+      "y": 455,
+      "w": 250,
+      "h": 85,
+      "title": "Artifacts and weights",
+      "detail": "Read-only bind mounts",
+      "kind": "store"
+    }
+  ],
+  "edges": [
+    {
+      "a": "browser",
+      "b": "api",
+      "label": "HTTP",
+      "via": null
+    },
+    {
+      "a": "api",
+      "b": "models",
+      "label": "typed requests",
+      "via": null
+    },
+    {
+      "a": "api",
+      "b": "state",
+      "label": "bounded writes",
+      "via": null
+    },
+    {
+      "a": "artifact",
+      "b": "models",
+      "label": "GGUF",
+      "via": null
+    },
+    {
+      "a": "artifact",
+      "b": "api",
+      "label": "NPZ",
+      "via": null
+    },
+    {
+      "a": "api",
+      "b": "obs",
+      "label": "metrics + OTLP",
+      "via": [
+        [
+          325,
+          400
+        ],
+        [
+          875,
+          400
+        ]
+      ]
+    }
+  ]
+}

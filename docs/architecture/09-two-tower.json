@@ -1,0 +1,82 @@
+{
+  "name": "09-two-tower",
+  "title": "Two-Tower retrieval and pairwise training",
+  "nodes": [
+    {
+      "id": "u",
+      "x": 25,
+      "y": 60,
+      "w": 250,
+      "h": 100,
+      "title": "User inputs",
+      "detail": "ID embedding 64\nTrain-only genre profile G",
+      "kind": "container"
+    },
+    {
+      "id": "i",
+      "x": 25,
+      "y": 350,
+      "w": 250,
+      "h": 100,
+      "title": "Item inputs",
+      "detail": "ID embedding 64\nMulti-hot genre vector G",
+      "kind": "container"
+    },
+    {
+      "id": "ut",
+      "x": 380,
+      "y": 60,
+      "w": 270,
+      "h": 100,
+      "title": "User tower",
+      "detail": "Linear 64+G → 64 → 32\nReLU + L2 normalization",
+      "kind": "container"
+    },
+    {
+      "id": "it",
+      "x": 380,
+      "y": 350,
+      "w": 270,
+      "h": 100,
+      "title": "Item tower",
+      "detail": "Linear 64+G → 64 → 32\nReLU + L2 normalization",
+      "kind": "container"
+    },
+    {
+      "id": "score",
+      "x": 790,
+      "y": 190,
+      "w": 240,
+      "h": 120,
+      "title": "Dot product",
+      "detail": "Score = z(u) · z(i)\nBPR with temperature 0.1\nAll-catalog top K",
+      "kind": "container"
+    }
+  ],
+  "edges": [
+    {
+      "a": "u",
+      "b": "ut",
+      "label": "",
+      "via": null
+    },
+    {
+      "a": "i",
+      "b": "it",
+      "label": "",
+      "via": null
+    },
+    {
+      "a": "ut",
+      "b": "score",
+      "label": "user vector",
+      "via": null
+    },
+    {
+      "a": "it",
+      "b": "score",
+      "label": "item vector",
+      "via": null
+    }
+  ]
+}

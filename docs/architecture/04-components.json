@@ -1,0 +1,145 @@
+{
+  "name": "04-components",
+  "title": "C4 Components inside the application",
+  "nodes": [
+    {
+      "id": "gate",
+      "x": 20,
+      "y": 60,
+      "w": 185,
+      "h": 100,
+      "title": "Decision gate",
+      "detail": "[Component]\nSoftmax + confidence",
+      "kind": "container"
+    },
+    {
+      "id": "planner",
+      "x": 280,
+      "y": 60,
+      "w": 200,
+      "h": 100,
+      "title": "Planner agent",
+      "detail": "[Component]\nQwen family",
+      "kind": "container"
+    },
+    {
+      "id": "tools",
+      "x": 550,
+      "y": 60,
+      "w": 200,
+      "h": 100,
+      "title": "Catalog tools",
+      "detail": "[Component]\nTwo-Tower + filters",
+      "kind": "container"
+    },
+    {
+      "id": "select",
+      "x": 810,
+      "y": 60,
+      "w": 200,
+      "h": 100,
+      "title": "Selector agent",
+      "detail": "[Component]\nQwen3.5",
+      "kind": "container"
+    },
+    {
+      "id": "memory",
+      "x": 20,
+      "y": 340,
+      "w": 185,
+      "h": 100,
+      "title": "Memory adapter",
+      "detail": "[Component]\nSQL facts + episodes",
+      "kind": "container"
+    },
+    {
+      "id": "finish",
+      "x": 280,
+      "y": 340,
+      "w": 200,
+      "h": 100,
+      "title": "Output renderer",
+      "detail": "[Component]\nCatalog facts only",
+      "kind": "container"
+    },
+    {
+      "id": "fallback",
+      "x": 550,
+      "y": 340,
+      "w": 200,
+      "h": 100,
+      "title": "Fallback",
+      "detail": "[Component]\nRanked catalog records",
+      "kind": "container"
+    },
+    {
+      "id": "verify",
+      "x": 810,
+      "y": 340,
+      "w": 200,
+      "h": 100,
+      "title": "Validation layer",
+      "detail": "[Component]\nContracts + Gemma",
+      "kind": "container"
+    }
+  ],
+  "edges": [
+    {
+      "a": "gate",
+      "b": "planner",
+      "label": "route",
+      "via": null
+    },
+    {
+      "a": "planner",
+      "b": "tools",
+      "label": "plan",
+      "via": null
+    },
+    {
+      "a": "tools",
+      "b": "select",
+      "label": "candidates",
+      "via": null
+    },
+    {
+      "a": "select",
+      "b": "verify",
+      "label": "selected IDs",
+      "via": null
+    },
+    {
+      "a": "verify",
+      "b": "fallback",
+      "label": "reject / unavailable",
+      "via": null
+    },
+    {
+      "a": "fallback",
+      "b": "finish",
+      "label": "safe output",
+      "via": null
+    },
+    {
+      "a": "verify",
+      "b": "finish",
+      "label": "accepted",
+      "via": [
+        [
+          910,
+          505
+        ],
+        [
+          380,
+          505
+        ]
+      ]
+    },
+    {
+      "a": "memory",
+      "b": "planner",
+      "label": "preferences",
+      "via": null
+    }
+  ]
+}

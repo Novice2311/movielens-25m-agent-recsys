@@ -1,0 +1,25 @@
+sequenceDiagram
+    actor U as User
+    participant G as LangGraph
+    participant M as Memory
+    participant D as Decision gate
+    participant Q as Qwen planner
+    participant T as Catalog tools
+    participant S as Qwen selector
+    participant V as Gemma validator
+    U->>G: query, user_id, k
+    G->>M: recall(user_id)
+    G->>D: choice and confidence
+    D-->>G: small or modern route
+    G->>Q: typed plan
+    Q-->>G: genres and exclusions
+    G->>T: retrieve and filter
+    T-->>S: candidates with evidence
+    S->>V: selected IDs and genres
+    V-->>G: verdict
+    alt rejected once
+      G->>S: repair with errors
+      S->>V: revised selection
+    end
+    G->>M: save episode with TTL
+    G-->>U: verified result or catalog fallback

@@ -1,0 +1,17 @@
+flowchart LR
+  gate["Decision gate<br/>[Component]<br/>Softmax + confidence"]
+  planner["Planner agent<br/>[Component]<br/>Qwen family"]
+  tools["Catalog tools<br/>[Component]<br/>Two-Tower + filters"]
+  select["Selector agent<br/>[Component]<br/>Qwen3.5"]
+  memory["Memory adapter<br/>[Component]<br/>SQL facts + episodes"]
+  finish["Output renderer<br/>[Component]<br/>Catalog facts only"]
+  fallback["Fallback<br/>[Component]<br/>Ranked catalog records"]
+  verify["Validation layer<br/>[Component]<br/>Contracts + Gemma"]
+  gate -->|"route"| planner
+  planner -->|"plan"| tools
+  tools -->|"candidates"| select
+  select -->|"selected IDs"| verify
+  verify -->|"reject / unavailable"| fallback
+  fallback -->|"safe output"| finish
+  verify -->|"accepted"| finish
+  memory -->|"preferences"| planner

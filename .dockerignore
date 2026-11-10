@@ -1,0 +1,11 @@
+.git
+artifacts
+models
+data
+wheelhouse/*.parts
+state
+tests
+docs
+screenshots
+*.zip
+__pycache__

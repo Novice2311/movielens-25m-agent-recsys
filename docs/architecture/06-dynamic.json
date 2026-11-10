@@ -1,0 +1,119 @@
+{
+  "name": "06-dynamic",
+  "title": "C4 Dynamic request view",
+  "nodes": [
+    {
+      "id": "user",
+      "x": 25,
+      "y": 60,
+      "w": 190,
+      "h": 100,
+      "title": "Browser UI",
+      "detail": "[Container]\nBounded request",
+      "kind": "container"
+    },
+    {
+      "id": "graph",
+      "x": 375,
+      "y": 60,
+      "w": 250,
+      "h": 100,
+      "title": "Graph supervisor",
+      "detail": "[Container]\nState and routing",
+      "kind": "container"
+    },
+    {
+      "id": "models",
+      "x": 800,
+      "y": 60,
+      "w": 220,
+      "h": 100,
+      "title": "LLM pool",
+      "detail": "[Container group]\nQwen / Gemma",
+      "kind": "container"
+    },
+    {
+      "id": "catalog",
+      "x": 375,
+      "y": 350,
+      "w": 250,
+      "h": 100,
+      "title": "Catalog tool",
+      "detail": "[Component]\nRank, filter, check",
+      "kind": "container"
+    },
+    {
+      "id": "memory",
+      "x": 25,
+      "y": 350,
+      "w": 190,
+      "h": 100,
+      "title": "Memory",
+      "detail": "[Data store]\nFacts and episodes",
+      "kind": "store"
+    },
+    {
+      "id": "output",
+      "x": 800,
+      "y": 350,
+      "w": 220,
+      "h": 100,
+      "title": "Validated output",
+      "detail": "[Data]\nOr deterministic fallback",
+      "kind": "store"
+    }
+  ],
+  "edges": [
+    {
+      "a": "user",
+      "b": "graph",
+      "label": "1 request",
+      "via": null
+    },
+    {
+      "a": "memory",
+      "b": "graph",
+      "label": "2 recall",
+      "via": null
+    },
+    {
+      "a": "graph",
+      "b": "models",
+      "label": "3 plan / select / verify",
+      "via": null
+    },
+    {
+      "a": "graph",
+      "b": "catalog",
+      "label": "4 retrieve + contracts",
+      "via": null
+    },
+    {
+      "a": "catalog",
+      "b": "output",
+      "label": "5 evidence",
+      "via": null
+    },
+    {
+      "a": "models",
+      "b": "output",
+      "label": "6 verdict",
+      "via": null
+    },
+    {
+      "a": "output",
+      "b": "user",
+      "label": "7 response",
+      "via": [
+        [
+          910,
+          530
+        ],
+        [
+          120,
+          530
+        ]
+      ]
+    }
+  ]
+}

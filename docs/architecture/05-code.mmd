@@ -1,0 +1,8 @@
+flowchart LR
+  graph["MovieAgents<br/>graph.compile()<br/>invoke(query, user_id)<br/>validator(state)<br/>after_validation(state)"]
+  catalog["Catalog<br/>retrieve(user_id, genres)<br/>verify(selected, candidates)<br/>seen(user_id)"]
+  memory["Memory<br/>recall(user_id)<br/>explicit_preference(...)<br/>remember_episode(...)<br/>forget(user_id)"]
+  client["JsonModelClient<br/>json(model, system, schema)<br/>Allowed gateway only<br/>Bounded output and timeout"]
+  graph -->|"uses"| catalog
+  graph -->|"uses"| memory
+  graph -->|"calls"| client

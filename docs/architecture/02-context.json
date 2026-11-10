@@ -1,0 +1,66 @@
+{
+  "name": "02-context",
+  "title": "C4 System context",
+  "nodes": [
+    {
+      "id": "user",
+      "x": 25,
+      "y": 180,
+      "w": 180,
+      "h": 90,
+      "title": "Зритель",
+      "detail": "[Person]\nЖанры и ограничения",
+      "kind": "person"
+    },
+    {
+      "id": "app",
+      "x": 350,
+      "y": 160,
+      "w": 270,
+      "h": 130,
+      "title": "MovieLens Agent System",
+      "detail": "[Software System]\nПерсональный подбор\nПроверенные ID и жанры",
+      "kind": "system"
+    },
+    {
+      "id": "data",
+      "x": 760,
+      "y": 40,
+      "w": 220,
+      "h": 95,
+      "title": "MovieLens 25M",
+      "detail": "[External System]\nДанные до 2019 года",
+      "kind": "external"
+    },
+    {
+      "id": "owner",
+      "x": 760,
+      "y": 370,
+      "w": 220,
+      "h": 90,
+      "title": "Разработчик",
+      "detail": "[Person]\nВерсии моделей и evals",
+      "kind": "person"
+    }
+  ],
+  "edges": [
+    {
+      "a": "user",
+      "b": "app",
+      "label": "HTTP / JSON",
+      "via": null
+    },
+    {
+      "a": "data",
+      "b": "app",
+      "label": "данные для обучения",
+      "via": null
+    },
+    {
+      "a": "owner",
+      "b": "app",
+      "label": "локальное развёртывание",
+      "via": null
+    }
+  ]
+}

@@ -1,0 +1,98 @@
+{
+  "name": "01-landscape",
+  "title": "C4 System landscape",
+  "nodes": [
+    {
+      "id": "person",
+      "x": 40,
+      "y": 160,
+      "w": 180,
+      "h": 90,
+      "title": "Зритель",
+      "detail": "[Person]\nВыбирает фильмы",
+      "kind": "person"
+    },
+    {
+      "id": "service",
+      "x": 370,
+      "y": 160,
+      "w": 230,
+      "h": 100,
+      "title": "MovieLens Lab",
+      "detail": "[Software System]\nРекомендации и агенты",
+      "kind": "system"
+    },
+    {
+      "id": "maintainer",
+      "x": 750,
+      "y": 30,
+      "w": 220,
+      "h": 90,
+      "title": "Разработчик",
+      "detail": "[Person]\nОбучение и проверка",
+      "kind": "person"
+    },
+    {
+      "id": "data",
+      "x": 40,
+      "y": 370,
+      "w": 220,
+      "h": 90,
+      "title": "GroupLens",
+      "detail": "[External System]\nПубличный датасет",
+      "kind": "external"
+    },
+    {
+      "id": "github",
+      "x": 750,
+      "y": 350,
+      "w": 220,
+      "h": 90,
+      "title": "GitHub",
+      "detail": "[External System]\nКод и CI",
+      "kind": "external"
+    },
+    {
+      "id": "monitor",
+      "x": 370,
+      "y": 370,
+      "w": 230,
+      "h": 90,
+      "title": "Наблюдаемость",
+      "detail": "[Software System]\nМетрики и трассы",
+      "kind": "system"
+    }
+  ],
+  "edges": [
+    {
+      "a": "person",
+      "b": "service",
+      "label": "запросы",
+      "via": null
+    },
+    {
+      "a": "data",
+      "b": "service",
+      "label": "offline import",
+      "via": null
+    },
+    {
+      "a": "maintainer",
+      "b": "service",
+      "label": "обновления",
+      "via": null
+    },
+    {
+      "a": "maintainer",
+      "b": "github",
+      "label": "код",
+      "via": null
+    },
+    {
+      "a": "service",
+      "b": "monitor",
+      "label": "телеметрия",
+      "via": null
+    }
+  ]
+}

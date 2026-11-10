@@ -1,0 +1,121 @@
+{
+  "train_n": 60,
+  "dev_n": 9,
+  "test_n": 18,
+  "accuracy": 1.0,
+  "brier": 0.07814017774967205,
+  "ece_10bins": 0.1366588841739687,
+  "coverage_at_0_8": 0.7777777777777778,
+  "temperature": 0.5151898734177215,
+  "cases": [
+    {
+      "text": "Посоветуй фантастическое кино без ужасов",
+      "expected": "recommend",
+      "predicted": "recommend",
+      "confidence": 0.9994572622302155
+    },
+    {
+      "text": "Подбери пять комедий",
+      "expected": "recommend",
+      "predicted": "recommend",
+      "confidence": 0.973827239647742
+    },
+    {
+      "text": "Хочу посмотреть драму вечером",
+      "expected": "recommend",
+      "predicted": "recommend",
+      "confidence": 0.9912321544492215
+    },
+    {
+      "text": "Recommend a documentary film",
+      "expected": "recommend",
+      "predicted": "recommend",
+      "confidence": 0.9406885128605696
+    },
+    {
+      "text": "Найди интересный мультфильм",
+      "expected": "recommend",
+      "predicted": "recommend",
+      "confidence": 0.9815307272741831
+    },
+    {
+      "text": "Show me science fiction",
+      "expected": "recommend",
+      "predicted": "recommend",
+      "confidence": 0.9798504271689122
+    },
+    {
+      "text": "Не могу решить",
+      "expected": "clarify",
+      "predicted": "clarify",
+      "confidence": 0.8697153358042293
+    },
+    {
+      "text": "Добрый день",
+      "expected": "clarify",
+      "predicted": "clarify",
+      "confidence": 0.6104843347956708
+    },
+    {
+      "text": "Пока не понимаю",
+      "expected": "clarify",
+      "predicted": "clarify",
+      "confidence": 0.9216889325944975
+    },
+    {
+      "text": "Hey there",
+      "expected": "clarify",
+      "predicted": "clarify",
+      "confidence": 0.9783456656610189
+    },
+    {
+      "text": "I am not sure",
+      "expected": "clarify",
+      "predicted": "clarify",
+      "confidence": 0.9857256026175193
+    },
+    {
+      "text": "Нужна помощь",
+      "expected": "clarify",
+      "predicted": "clarify",
+      "confidence": 0.8664819389637105
+    },
+    {
+      "text": "Удали все мои предпочтения",
+      "expected": "memory",
+      "predicted": "memory",
+      "confidence": 0.9964263119258154
+    },
+    {
+      "text": "Запомни что я люблю драмы",
+      "expected": "memory",
+      "predicted": "memory",
+      "confidence": 0.9378958176157352
+    },
+    {
+      "text": "Что сохранилось в памяти",
+      "expected": "memory",
+      "predicted": "memory",
+      "confidence": 0.46316831362511535
+    },
+    {
+      "text": "Remember that I like comedy",
+      "expected": "memory",
+      "predicted": "memory",
+      "confidence": 0.4627010808821334
+    },
+    {
+      "text": "Forget everything about me",
+      "expected": "memory",
+      "predicted": "memory",
+      "confidence": 0.7250820260360187
+    },
+    {
+      "text": "Сохрани список моих жанров",
+      "expected": "memory",
+      "predicted": "memory",
+      "confidence": 0.8558384007162558
+    }
+  ],
+  "limitations": "18 authored test phrases; narrow routing task; not a general Jev replacement"
+}

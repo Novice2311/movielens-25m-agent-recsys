@@ -1,0 +1,66 @@
+{
+  "name": "05-code",
+  "title": "C4 Code relationships",
+  "nodes": [
+    {
+      "id": "graph",
+      "x": 30,
+      "y": 70,
+      "w": 300,
+      "h": 150,
+      "title": "MovieAgents",
+      "detail": "graph.compile()\ninvoke(query, user_id)\nvalidator(state)\nafter_validation(state)",
+      "kind": "container"
+    },
+    {
+      "id": "catalog",
+      "x": 700,
+      "y": 70,
+      "w": 300,
+      "h": 150,
+      "title": "Catalog",
+      "detail": "retrieve(user_id, genres)\nverify(selected, candidates)\nseen(user_id)",
+      "kind": "container"
+    },
+    {
+      "id": "memory",
+      "x": 30,
+      "y": 350,
+      "w": 300,
+      "h": 145,
+      "title": "Memory",
+      "detail": "recall(user_id)\nexplicit_preference(...)\nremember_episode(...)\nforget(user_id)",
+      "kind": "container"
+    },
+    {
+      "id": "client",
+      "x": 700,
+      "y": 350,
+      "w": 300,
+      "h": 145,
+      "title": "JsonModelClient",
+      "detail": "json(model, system, schema)\nAllowed gateway only\nBounded output and timeout",
+      "kind": "container"
+    }
+  ],
+  "edges": [
+    {
+      "a": "graph",
+      "b": "catalog",
+      "label": "uses",
+      "via": null
+    },
+    {
+      "a": "graph",
+      "b": "memory",
+      "label": "uses",
+      "via": null
+    },
+    {
+      "a": "graph",
+      "b": "client",
+      "label": "calls",
+      "via": null
+    }
+  ]
+}

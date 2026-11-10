@@ -1,0 +1,8 @@
+flowchart LR
+  user["Зритель<br/>[Person]<br/>Жанры и ограничения"]
+  app["MovieLens Agent System<br/>[Software System]<br/>Персональный подбор<br/>Проверенные ID и жанры"]
+  data["MovieLens 25M<br/>[External System]<br/>Данные до 2019 года"]
+  owner["Разработчик<br/>[Person]<br/>Версии моделей и evals"]
+  user -->|"HTTP / JSON"| app
+  data -->|"данные для обучения"| app
+  owner -->|"локальное развёртывание"| app

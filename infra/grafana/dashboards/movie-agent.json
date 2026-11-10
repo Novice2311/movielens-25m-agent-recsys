@@ -1,0 +1,145 @@
+{
+  "uid": "movie-agent",
+  "title": "MovieLens agent observability",
+  "schemaVersion": 40,
+  "version": 1,
+  "refresh": "5s",
+  "time": {
+    "from": "now-30m",
+    "to": "now"
+  },
+  "panels": [
+    {
+      "id": 1,
+      "title": "Requests by outcome",
+      "type": "timeseries",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "movie-prom"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 0
+      },
+      "targets": [
+        {
+          "expr": "sum by(outcome)(movie_agent_requests_total)",
+          "refId": "A",
+          "legendFormat": "{{model}} {{outcome}} {{reason}} {{direction}}"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "LLM errors",
+      "type": "timeseries",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "movie-prom"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 0
+      },
+      "targets": [
+        {
+          "expr": "sum by(model)(movie_agent_llm_calls_total{status=\"error\"})",
+          "refId": "A",
+          "legendFormat": "{{model}} {{outcome}} {{reason}} {{direction}}"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Request p95 seconds",
+      "type": "timeseries",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "movie-prom"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 8
+      },
+      "targets": [
+        {
+          "expr": "histogram_quantile(0.95,sum by(le)(rate(movie_agent_request_seconds_bucket[5m])))",
+          "refId": "A",
+          "legendFormat": "{{model}} {{outcome}} {{reason}} {{direction}}"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "LLM tokens",
+      "type": "timeseries",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "movie-prom"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 8
+      },
+      "targets": [
+        {
+          "expr": "sum by(model,direction)(movie_agent_tokens_total)",
+          "refId": "A",
+          "legendFormat": "{{model}} {{outcome}} {{reason}} {{direction}}"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Verifier rejections",
+      "type": "timeseries",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "movie-prom"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 16
+      },
+      "targets": [
+        {
+          "expr": "sum by(reason)(movie_agent_verifier_reject_total)",
+          "refId": "A",
+          "legendFormat": "{{model}} {{outcome}} {{reason}} {{direction}}"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "title": "LLM latency",
+      "type": "timeseries",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "movie-prom"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 16
+      },
+      "targets": [
+        {
+          "expr": "histogram_quantile(0.95,sum by(le,model)(rate(movie_agent_llm_seconds_bucket[5m])))",
+          "refId": "A",
+          "legendFormat": "{{model}} {{outcome}} {{reason}} {{direction}}"
+        }
+      ]
+    }
+  ]
+}

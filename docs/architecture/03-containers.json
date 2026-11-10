@@ -1,0 +1,123 @@
+{
+  "name": "03-containers",
+  "title": "C4 Containers",
+  "nodes": [
+    {
+      "id": "web",
+      "x": 30,
+      "y": 45,
+      "w": 210,
+      "h": 100,
+      "title": "Web UI",
+      "detail": "[Container · Browser]\nЗапрос и результат",
+      "kind": "container"
+    },
+    {
+      "id": "api",
+      "x": 360,
+      "y": 45,
+      "w": 250,
+      "h": 100,
+      "title": "Application API",
+      "detail": "[Container · Python]\nFastAPI и LangGraph",
+      "kind": "container"
+    },
+    {
+      "id": "llm",
+      "x": 780,
+      "y": 45,
+      "w": 230,
+      "h": 100,
+      "title": "LLM gateway",
+      "detail": "[Container · Python]\nТри фиксированных URL",
+      "kind": "container"
+    },
+    {
+      "id": "art",
+      "x": 30,
+      "y": 335,
+      "w": 210,
+      "h": 100,
+      "title": "Model artifacts",
+      "detail": "[Data store · NPZ]\nВекторы и каталог",
+      "kind": "store"
+    },
+    {
+      "id": "db",
+      "x": 360,
+      "y": 335,
+      "w": 250,
+      "h": 100,
+      "title": "Memory store",
+      "detail": "[Data store · SQLite]\nФакты и эпизоды",
+      "kind": "store"
+    },
+    {
+      "id": "models",
+      "x": 780,
+      "y": 335,
+      "w": 230,
+      "h": 100,
+      "title": "Local model pool",
+      "detail": "[Container group]\nТри llama.cpp server",
+      "kind": "container"
+    },
+    {
+      "id": "obs",
+      "x": 360,
+      "y": 540,
+      "w": 250,
+      "h": 95,
+      "title": "Observability stack",
+      "detail": "[Container group]\nPrometheus / Tempo / Grafana",
+      "kind": "container"
+    }
+  ],
+  "edges": [
+    {
+      "a": "web",
+      "b": "api",
+      "label": "HTTP",
+      "via": null
+    },
+    {
+      "a": "api",
+      "b": "llm",
+      "label": "typed JSON",
+      "via": null
+    },
+    {
+      "a": "llm",
+      "b": "models",
+      "label": "OpenAI-compatible API",
+      "via": null
+    },
+    {
+      "a": "api",
+      "b": "db",
+      "label": "SQL + TTL",
+      "via": null
+    },
+    {
+      "a": "art",
+      "b": "api",
+      "label": "read only",
+      "via": null
+    },
+    {
+      "a": "api",
+      "b": "obs",
+      "label": "metrics + OTLP",
+      "via": [
+        [
+          670,
+          200
+        ],
+        [
+          670,
+          585
+        ]
+      ]
+    }
+  ]
+}

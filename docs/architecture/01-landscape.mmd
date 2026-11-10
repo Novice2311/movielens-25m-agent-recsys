@@ -1,0 +1,12 @@
+flowchart LR
+  person["Зритель<br/>[Person]<br/>Выбирает фильмы"]
+  service["MovieLens Lab<br/>[Software System]<br/>Рекомендации и агенты"]
+  maintainer["Разработчик<br/>[Person]<br/>Обучение и проверка"]
+  data["GroupLens<br/>[External System]<br/>Публичный датасет"]
+  github["GitHub<br/>[External System]<br/>Код и CI"]
+  monitor["Наблюдаемость<br/>[Software System]<br/>Метрики и трассы"]
+  person -->|"запросы"| service
+  data -->|"offline import"| service
+  maintainer -->|"обновления"| service
+  maintainer -->|"код"| github
+  service -->|"телеметрия"| monitor

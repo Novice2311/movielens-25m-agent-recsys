@@ -1,0 +1,35 @@
+{
+  "definition": "fewer than five positive ratings in train; test 2019; same catalog and seen filters",
+  "positive_test_ratings_cold": 520899,
+  "positive_cold_in_train_catalog": 496870,
+  "eligible_users": 6802,
+  "evaluated_users": 1000,
+  "models": {
+    "Popularity": {
+      "recall_at_10": 0.07105360882345049,
+      "ndcg_at_10": 0.3497404654067177,
+      "catalog_coverage_at_10": 0.0019523450326130363
+    },
+    "Recent90d": {
+      "recall_at_10": 0.08789250299725701,
+      "ndcg_at_10": 0.41785101113735135,
+      "catalog_coverage_at_10": 0.0023738740737453963
+    }
+  },
+  "warm_exploratory_paired_comparisons_two_tower_minus": {
+    "UserKNN40": {
+      "mean_delta": -0.015200056606439343,
+      "ci95": [
+        -0.02247489419647221,
+        -0.007771357078361805
+      ]
+    },
+    "Recent90d": {
+      "mean_delta": 0.004448958643228229,
+      "ci95": [
+        -0.0049935415818198724,
+        0.014138703444554427
+      ]
+    }
+  }
+}
