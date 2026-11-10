@@ -99,7 +99,7 @@
     {
       "a": "tools",
       "b": "select",
-      "label": "candidates",
+      "label": "top K",
       "via": null
     },
     {
@@ -111,13 +111,13 @@
     {
       "a": "verify",
       "b": "fallback",
-      "label": "reject / unavailable",
+      "label": "reject",
       "via": null
     },
     {
       "a": "fallback",
       "b": "finish",
-      "label": "safe output",
+      "label": "output",
       "via": null
     },
     {

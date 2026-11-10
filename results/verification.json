@@ -1,0 +1,46 @@
+{
+  "unit_passed": 17,
+  "explicit_memory_applied": true,
+  "episodic_repeats_filtered": true,
+  "test_memory_deleted": true,
+  "prometheus_target_up": true,
+  "fallback_on_model_outage": true,
+  "fault_trace_id": "019026cbaf01b13da4c40f8514cd135f",
+  "fault_trajectory": [
+    {
+      "node": "recall",
+      "ms": 0.35
+    },
+    {
+      "node": "decision",
+      "ms": 0.29
+    },
+    {
+      "node": "planner",
+      "ms": 1.75
+    },
+    {
+      "node": "retriever",
+      "ms": 1.41
+    },
+    {
+      "node": "selector",
+      "ms": 5.74
+    },
+    {
+      "node": "validator",
+      "ms": 0.11
+    },
+    {
+      "node": "fallback",
+      "ms": 0.06
+    },
+    {
+      "node": "finish",
+      "ms": 0.03
+    }
+  ],
+  "alert_received": true,
+  "trace_available_in_tempo": true,
+  "models_restored": true
+}

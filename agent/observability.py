@@ -59,9 +59,15 @@ class Observability:
         LLM_LATENCY.labels(model).observe(seconds)
         TOKENS.labels(model,'input').inc(input_tokens)
         TOKENS.labels(model,'output').inc(output_tokens)
+        span=trace.get_current_span()
+        span.set_attribute('gen_ai.request.model',model)
+        span.set_attribute('gen_ai.usage.input_tokens',input_tokens)
+        span.set_attribute('gen_ai.usage.output_tokens',output_tokens)
+        if error:span.set_status(trace.Status(trace.StatusCode.ERROR,error))
         meta=meta or {}
         self.log('llm_call',model=model,seconds=round(seconds,4),input_tokens=input_tokens,
                  output_tokens=output_tokens,error=error,
+                 trace_id=f'{span.get_span_context().trace_id:032x}',
                  load_seconds=round(meta.get('load_duration',0)/1e9,4))
 
     def save_trajectory(self,state):

@@ -1,13 +1,15 @@
 flowchart LR
-  browser["Browser<br/>localhost:18080"]
+  browser["Browser<br/>Windows host<br/>localhost:18080"]
+  ingress["TCP ingress<br/>[Container · edge + internal]<br/>Fixed loopback forwards"]
   api["App + gateway<br/>non-root · read-only<br/>CPU and memory limits"]
   models["3 llama.cpp servers<br/>CPU inference<br/>GGUF read-only mount"]
   obs["Observability<br/>Metrics + traces<br/>Loopback dashboards"]
   state["State volume<br/>SQLite + JSONL"]
   artifact["Artifacts and weights<br/>Read-only bind mounts"]
-  browser -->|"HTTP"| api
-  api -->|"typed requests"| models
+  browser -->|"loopback"| ingress
+  ingress -->|"fixed route"| api
+  api -->|"JSON"| models
   api -->|"bounded writes"| state
   artifact -->|"GGUF"| models
   artifact -->|"NPZ"| api
-  api -->|"metrics + OTLP"| obs
+  api -->|"OTLP"| obs

@@ -1,0 +1,18 @@
+{
+  "uid": 10001,
+  "rootfs_write_blocked": true,
+  "artifact_write_blocked": true,
+  "internet_blocked": true,
+  "docker_socket_absent": true,
+  "network_internal": true,
+  "memory_limit_bytes": 1610612736,
+  "read_only_rootfs": true,
+  "cap_drop": [
+    "ALL"
+  ],
+  "security_options": [
+    "no-new-privileges:true"
+  ],
+  "pids_limit": 128,
+  "privileged": false
+}

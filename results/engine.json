@@ -1,0 +1,8 @@
+{
+  "engine": "llama.cpp",
+  "version_output": "version: 0.9.0-dev (build 12242, commit 3b4d6ab3f)\nbuilt with GNU 15.2.0 for Linux x86_64",
+  "source_manifest": "sha256:0ec47720c0621ae866b95691e298b3cf4aa01c5211aa4834c54ffdf6b1333221",
+  "device": "CPU",
+  "threads_per_model": 4,
+  "context_tokens": 4096
+}

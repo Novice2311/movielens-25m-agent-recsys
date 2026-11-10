@@ -1,0 +1,330 @@
+{
+  "protocol": {
+    "tasks": 8,
+    "temperature": 0,
+    "seed": 20261111,
+    "num_ctx": 4096,
+    "num_predict": 40,
+    "description": "Authored bilingual genre extraction; same schema and tasks for all models."
+  },
+  "models": {
+    "qwen3:0.6b": {
+      "n": 8,
+      "correct": 6,
+      "valid_json": 8,
+      "median_seconds": 0.2228162000010343,
+      "p95_seconds": 0.29415159000127455,
+      "warm_median_seconds": 0.2228162000010343,
+      "cases": [
+        {
+          "query": "I want a comedy",
+          "expected": "Comedy",
+          "answer": "Comedy",
+          "valid_json": true,
+          "correct": true,
+          "seconds": 0.3227958000024955,
+          "load_seconds": 0.0,
+          "input_tokens": 34,
+          "output_tokens": 11,
+          "error": null
+        },
+        {
+          "query": "Хочу фантастику",
+          "expected": "Sci-Fi",
+          "answer": "Sci-Fi",
+          "valid_json": true,
+          "correct": true,
+          "seconds": 0.24095519999900716,
+          "load_seconds": 0.0,
+          "input_tokens": 38,
+          "output_tokens": 11,
+          "error": null
+        },
+        {
+          "query": "Покажи ужасы",
+          "expected": "Horror",
+          "answer": "Drama",
+          "valid_json": true,
+          "correct": false,
+          "seconds": 0.23013220000211732,
+          "load_seconds": 0.0,
+          "input_tokens": 38,
+          "output_tokens": 11,
+          "error": null
+        },
+        {
+          "query": "Recommend a drama",
+          "expected": "Drama",
+          "answer": "Drama",
+          "valid_json": true,
+          "correct": true,
+          "seconds": 0.2155001999999513,
+          "load_seconds": 0.0,
+          "input_tokens": 33,
+          "output_tokens": 11,
+          "error": null
+        },
+        {
+          "query": "Хочу мультфильм",
+          "expected": "Animation",
+          "answer": "Action",
+          "valid_json": true,
+          "correct": false,
+          "seconds": 0.21434900000167545,
+          "load_seconds": 0.0,
+          "input_tokens": 38,
+          "output_tokens": 10,
+          "error": null
+        },
+        {
+          "query": "Action movie please",
+          "expected": "Action",
+          "answer": "Action",
+          "valid_json": true,
+          "correct": true,
+          "seconds": 0.1828983999985212,
+          "load_seconds": 0.0,
+          "input_tokens": 33,
+          "output_tokens": 10,
+          "error": null
+        },
+        {
+          "query": "I'd like romance",
+          "expected": "Romance",
+          "answer": "Romance",
+          "valid_json": true,
+          "correct": true,
+          "seconds": 0.2086420999985421,
+          "load_seconds": 0.0,
+          "input_tokens": 34,
+          "output_tokens": 11,
+          "error": null
+        },
+        {
+          "query": "Документальное кино",
+          "expected": "Documentary",
+          "answer": "Documentary",
+          "valid_json": true,
+          "correct": true,
+          "seconds": 0.230692099998123,
+          "load_seconds": 0.0,
+          "input_tokens": 34,
+          "output_tokens": 11,
+          "error": null
+        }
+      ]
+    },
+    "qwen3.5:0.8b": {
+      "n": 8,
+      "correct": 8,
+      "valid_json": 8,
+      "median_seconds": 0.3877196500015998,
+      "p95_seconds": 0.4729592700001376,
+      "warm_median_seconds": 0.3877196500015998,
+      "cases": [
+        {
+          "query": "I want a comedy",
+          "expected": "Comedy",
+          "answer": "Comedy",
+          "valid_json": true,
+          "correct": true,
+          "seconds": 0.5038929000002099,
+          "load_seconds": 0.0,
+          "input_tokens": 34,
+          "output_tokens": 13,
+          "error": null
+        },
+        {
+          "query": "Хочу фантастику",
+          "expected": "Sci-Fi",
+          "answer": "Sci-Fi",
+          "valid_json": true,
+          "correct": true,
+          "seconds": 0.3651298000004317,
+          "load_seconds": 0.0,
+          "input_tokens": 36,
+          "output_tokens": 8,
+          "error": null
+        },
+        {
+          "query": "Покажи ужасы",
+          "expected": "Horror",
+          "answer": "Horror",
+          "valid_json": true,
+          "correct": true,
+          "seconds": 0.32077510000090115,
+          "load_seconds": 0.0,
+          "input_tokens": 35,
+          "output_tokens": 8,
+          "error": null
+        },
+        {
+          "query": "Recommend a drama",
+          "expected": "Drama",
+          "answer": "Drama",
+          "valid_json": true,
+          "correct": true,
+          "seconds": 0.41368470000088564,
+          "load_seconds": 0.0,
+          "input_tokens": 33,
+          "output_tokens": 13,
+          "error": null
+        },
+        {
+          "query": "Хочу мультфильм",
+          "expected": "Animation",
+          "answer": "Animation",
+          "valid_json": true,
+          "correct": true,
+          "seconds": 0.31900190000305884,
+          "load_seconds": 0.0,
+          "input_tokens": 37,
+          "output_tokens": 7,
+          "error": null
+        },
+        {
+          "query": "Action movie please",
+          "expected": "Action",
+          "answer": "Action",
+          "valid_json": true,
+          "correct": true,
+          "seconds": 0.4103095000027679,
+          "load_seconds": 0.0,
+          "input_tokens": 33,
+          "output_tokens": 12,
+          "error": null
+        },
+        {
+          "query": "I'd like romance",
+          "expected": "Romance",
+          "answer": "Romance",
+          "valid_json": true,
+          "correct": true,
+          "seconds": 0.3002751999993052,
+          "load_seconds": 0.0,
+          "input_tokens": 34,
+          "output_tokens": 8,
+          "error": null
+        },
+        {
+          "query": "Документальное кино",
+          "expected": "Documentary",
+          "answer": "Documentary",
+          "valid_json": true,
+          "correct": true,
+          "seconds": 0.41551110000000335,
+          "load_seconds": 0.0,
+          "input_tokens": 36,
+          "output_tokens": 13,
+          "error": null
+        }
+      ]
+    },
+    "gemma3:270m": {
+      "n": 8,
+      "correct": 8,
+      "valid_json": 8,
+      "median_seconds": 0.28073570000015025,
+      "p95_seconds": 0.30095853000038914,
+      "warm_median_seconds": 0.28073570000015025,
+      "cases": [
+        {
+          "query": "I want a comedy",
+          "expected": "Comedy",
+          "answer": "Comedy",
+          "valid_json": true,
+          "correct": true,
+          "seconds": 0.289023500001349,
+          "load_seconds": 0.0,
+          "input_tokens": 27,
+          "output_tokens": 17,
+          "error": null
+        },
+        {
+          "query": "Хочу фантастику",
+          "expected": "Sci-Fi",
+          "answer": "Sci-Fi",
+          "valid_json": true,
+          "correct": true,
+          "seconds": 0.30379850000099395,
+          "load_seconds": 0.0,
+          "input_tokens": 28,
+          "output_tokens": 19,
+          "error": null
+        },
+        {
+          "query": "Покажи ужасы",
+          "expected": "Horror",
+          "answer": "Horror",
+          "valid_json": true,
+          "correct": true,
+          "seconds": 0.27244789999895147,
+          "load_seconds": 0.0,
+          "input_tokens": 28,
+          "output_tokens": 18,
+          "error": null
+        },
+        {
+          "query": "Recommend a drama",
+          "expected": "Drama",
+          "answer": "Drama",
+          "valid_json": true,
+          "correct": true,
+          "seconds": 0.2450566000006802,
+          "load_seconds": 0.0,
+          "input_tokens": 26,
+          "output_tokens": 17,
+          "error": null
+        },
+        {
+          "query": "Хочу мультфильм",
+          "expected": "Animation",
+          "answer": "Animation",
+          "valid_json": true,
+          "correct": true,
+          "seconds": 0.29568429999926593,
+          "load_seconds": 0.0,
+          "input_tokens": 29,
+          "output_tokens": 17,
+          "error": null
+        },
+        {
+          "query": "Action movie please",
+          "expected": "Action",
+          "answer": "Action",
+          "valid_json": true,
+          "correct": true,
+          "seconds": 0.23920439999710652,
+          "load_seconds": 0.0,
+          "input_tokens": 26,
+          "output_tokens": 17,
+          "error": null
+        },
+        {
+          "query": "I'd like romance",
+          "expected": "Romance",
+          "answer": "Romance",
+          "valid_json": true,
+          "correct": true,
+          "seconds": 0.2504096999982721,
+          "load_seconds": 0.0,
+          "input_tokens": 28,
+          "output_tokens": 18,
+          "error": null
+        },
+        {
+          "query": "Документальное кино",
+          "expected": "Documentary",
+          "answer": "Documentary",
+          "valid_json": true,
+          "correct": true,
+          "seconds": 0.2913864999973157,
+          "load_seconds": 0.0,
+          "input_tokens": 28,
+          "output_tokens": 18,
+          "error": null
+        }
+      ]
+    }
+  }
+}

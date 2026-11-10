@@ -9,9 +9,9 @@ flowchart LR
   verify["Validation layer<br/>[Component]<br/>Contracts + Gemma"]
   gate -->|"route"| planner
   planner -->|"plan"| tools
-  tools -->|"candidates"| select
+  tools -->|"top K"| select
   select -->|"selected IDs"| verify
-  verify -->|"reject / unavailable"| fallback
-  fallback -->|"safe output"| finish
+  verify -->|"reject"| fallback
+  fallback -->|"output"| finish
   verify -->|"accepted"| finish
   memory -->|"preferences"| planner

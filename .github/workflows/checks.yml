@@ -1,5 +1,9 @@
 name: Contracts and reproducibility checks
-on: [push, pull_request]
+on:
+  push:
+    paths-ignore: ['report/**', 'README.md']
+  pull_request:
+    paths-ignore: ['report/**', 'README.md']
 permissions:
   contents: read
 jobs:

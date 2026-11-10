@@ -14,7 +14,7 @@
       "y": 160,
       "w": 995,
       "h": 440,
-      "title": "Linux containers · internal network · no Docker socket"
+      "title": "Linux containers · internal network"
     }
   ],
   "nodes": [
@@ -25,8 +25,18 @@
       "w": 210,
       "h": 85,
       "title": "Browser",
-      "detail": "localhost:18080",
+      "detail": "Windows host\nlocalhost:18080",
       "kind": "person"
+    },
+    {
+      "id": "ingress",
+      "x": 405,
+      "y": 45,
+      "w": 250,
+      "h": 85,
+      "title": "TCP ingress",
+      "detail": "[Container · edge + internal]\nFixed loopback forwards",
+      "kind": "container"
     },
     {
       "id": "api",
@@ -82,14 +92,20 @@
   "edges": [
     {
       "a": "browser",
+      "b": "ingress",
+      "label": "loopback",
+      "via": null
+    },
+    {
+      "a": "ingress",
       "b": "api",
-      "label": "HTTP",
+      "label": "fixed route",
       "via": null
     },
     {
       "a": "api",
       "b": "models",
-      "label": "typed requests",
+      "label": "JSON",
       "via": null
     },
     {
@@ -108,20 +124,33 @@
       "a": "artifact",
       "b": "api",
       "label": "NPZ",
-      "via": null
+      "via": [
+        [
+          365,
+          497
+        ],
+        [
+          365,
+          380
+        ],
+        [
+          172,
+          380
+        ]
+      ]
     },
     {
       "a": "api",
       "b": "obs",
-      "label": "metrics + OTLP",
+      "label": "OTLP",
       "via": [
         [
           325,
-          400
+          423
         ],
         [
           875,
-          400
+          423
         ]
       ]
     }

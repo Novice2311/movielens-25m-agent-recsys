@@ -1,0 +1,10 @@
+{
+  "endpoint": "GET /api/recommendations",
+  "requests": 100,
+  "concurrency": 8,
+  "elapsed_seconds": 0.4482271999986551,
+  "requests_per_second": 223.10114156459056,
+  "p50_ms": 22.74339999894437,
+  "p95_ms": 81.15625500122404,
+  "scope": "Local loopback, warmed artifacts, same user, no LLM, 100 requests; not a production load test."
+}
